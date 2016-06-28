@@ -68,6 +68,8 @@ router.get('/posts/:post', function(req, res, next) {
 });
 
 router.put('/posts/:post/upvote', auth, function(req, res, next) {
+  var upvoter = req.payload.username;
+  req.post.upvotedBy.push(upvoter);
   req.post.upvote(function(err, post){
     if (err) { return next(err); }
 

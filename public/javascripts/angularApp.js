@@ -51,6 +51,7 @@ function($stateProvider, $urlRouterProvider) {
 }]);
 
 app.factory('posts', ['$http', 'auth', function($http, auth){
+  var currentUser = auth.currentUser();
   var o = {
     posts: []
   };
@@ -69,11 +70,13 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
     });
   };
 
-  o.upvote = function(post) {
+  o.upvote = function(post, currentUser) {
+    if (post.upvotedBy.includes(currentUser)) { return; }
     return $http.put('/posts/' + post._id + '/upvote', null, {
       headers: {Authorization: 'Bearer '+auth.getToken()}
     }).success(function(data){
       post.upvotes += 1;
+      post.upvotedBy.push(currentUser);
     });
   };
 
@@ -97,6 +100,10 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
     });
   };
 
+  o.isAlreadyUpvoted = function(post, user) {
+    return post.upvotedBy.includes(currentUser);
+  }
+
   return o;
 }]);
 
@@ -105,6 +112,8 @@ app.controller('MainCtrl', [
 function($scope, posts, auth){
 
   $scope.test = 'Hello world!';
+
+  $scope.currentUser = auth.currentUser();
 
   $scope.isLoggedIn = auth.isLoggedIn;
 
@@ -120,9 +129,14 @@ function($scope, posts, auth){
     $scope.link = '';
   };
 
-  $scope.incrementUpvotes = function(post) {
-    posts.upvote(post);
+  $scope.incrementUpvotes = function(post, currentUser) {
+    console.log("1: " + currentUser);
+    posts.upvote(post, currentUser);
   };
+
+  $scope.isAlreadyUpvoted = function(post, currentUser){
+    return posts.isAlreadyUpvoted(post, currentUser);
+  }
 
 }]);
 
@@ -134,6 +148,7 @@ app.controller('PostsCtrl', [
 function($scope, posts, post, auth){
   $scope.post = post;
   $scope.isLoggedIn = auth.isLoggedIn;
+  $scope.currentUser = auth.currentUser();
 
   $scope.addComment = function(){
     if($scope.body === '') { return; }
@@ -147,9 +162,12 @@ function($scope, posts, post, auth){
   };
 
   $scope.incrementUpvotes = function(comment){
-    // comment.upvotes += 1;
     posts.upvoteComment(post, comment);
   };
+
+  $scope.isAlreadyUpvoted = function(post, currentUser){
+    posts.isAlreadyUpvoted(post, currentUser);
+  }
 
 }]);
 
