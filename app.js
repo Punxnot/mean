@@ -11,7 +11,10 @@ var mongoose = require('mongoose');
 
 var passport = require('passport');
 
-mongoose.connect('mongodb://localhost/news');
+var mongodbUri = 'mongodb://ozma:ozma@ds027295.mlab.com:27295/ozma';
+mongoose.connect(mongodbUri);
+
+// mongoose.connect('mongodb://localhost/news');
 
 require('./models/Posts');
 require('./models/Comments');
