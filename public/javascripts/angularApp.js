@@ -130,7 +130,6 @@ function($scope, posts, auth){
   };
 
   $scope.incrementUpvotes = function(post, currentUser) {
-    console.log("1: " + currentUser);
     posts.upvote(post, currentUser);
   };
 
@@ -248,14 +247,9 @@ function($scope, $state, auth){
 
 app.controller('NavCtrl', [
 '$scope',
-'$http',
 'auth',
-function($scope, $http, auth){
+function($scope, auth){
   $scope.isLoggedIn = auth.isLoggedIn;
   $scope.currentUser = auth.currentUser;
   $scope.logOut = auth.logOut;
-
-  $http.get('https://api.vk.com/method/users.get?user_ids=210700286&fields=bdate&v=5.52').then(function(res){
-    console.log(res.data);
-  });
 }]);
