@@ -1,0 +1,28 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+form {
+  margin-top:30px;
+}
+
+.glyphicon-thumbs-up {
+  cursor: pointer;
+  color: #428bca;
+}
+
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.post-title {
+  font-size:20px;
+  margin-left:10px;
+}
+
+.comment-body {
+  margin-left:10px;
+  font-size:20px;
+}
