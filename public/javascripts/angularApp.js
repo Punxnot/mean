@@ -92,13 +92,13 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
     });
   };
 
-  o.upvoteComment = function(post, comment) {
-    return $http.put('/posts/' + post._id + '/comments/'+ comment._id + '/upvote', null, {
-      headers: {Authorization: 'Bearer '+auth.getToken()}
-    }).success(function(data){
-      comment.upvotes += 1;
-    });
-  };
+  // o.upvoteComment = function(post, comment) {
+  //   return $http.put('/posts/' + post._id + '/comments/'+ comment._id + '/upvote', null, {
+  //     headers: {Authorization: 'Bearer '+auth.getToken()}
+  //   }).success(function(data){
+  //     comment.upvotes += 1;
+  //   });
+  // };
 
   o.isAlreadyUpvoted = function(post, user) {
     return post.upvotedBy.includes(currentUser);
@@ -161,9 +161,9 @@ function($scope, posts, post, auth){
     $scope.body = '';
   };
 
-  $scope.incrementUpvotes = function(comment){
-    posts.upvoteComment(post, comment);
-  };
+  // $scope.incrementUpvotes = function(comment){
+  //   posts.upvoteComment(post, comment);
+  // };
 
   $scope.isAlreadyUpvoted = function(post, currentUser){
     posts.isAlreadyUpvoted(post, currentUser);
