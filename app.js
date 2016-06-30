@@ -72,5 +72,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
+var testVK = VK.Auth.getSession;
+console.log(testVK);
+
 
 module.exports = app;
