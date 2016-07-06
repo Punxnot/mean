@@ -26,6 +26,16 @@ function($stateProvider, $urlRouterProvider) {
         }]
       }
     })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: '/templates/profile.html',
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'auth', function($state, auth){
+        if(!auth.isLoggedIn()){
+          $state.go('home');
+        }
+      }]
+    })
     .state('login', {
       url: '/login',
       templateUrl: '/templates/login.html',
@@ -149,3 +159,53 @@ app.factory('auth', ['$http', '$window', function($http, $window){
 
   return auth;
 }]);
+
+app.directive('editableText', function() {
+  return {
+    restrict: 'E',
+    scope: {},
+    controller: function () {
+      this.name = 'Your name';
+    },
+    controllerAs: 'ctrl',
+    template: `<div class="editable-text-container">
+                <form>
+                  <input type="hidden" name="hiddenField">
+                </form>
+                <div class="name-container">
+                  <h2 class="name editable" id="name">{{ctrl.name}}</h2>
+                  <span class="ok-button"></span>
+                  <span class="close-btn"></span>
+                </div>
+              </div>`,
+    link: function(scope, elem, attrs, ctrl) {
+      elem.bind('click', function() {
+        elem = $(this).find(".editable");
+        if (elem.css('display') == "block") {
+          var okBtn = $(this).find(".ok-button");
+          var closeBtn = $(this).find(".close-btn");
+          var replaceWith = $("<input name='temp' type='text'>");
+          var connectWith = $("input[name='name']");
+          elem.hide();
+          okBtn.show();
+          closeBtn.show();
+          elem.after(replaceWith);
+          replaceWith.focus();
+          replaceWith.val(ctrl.name);
+          okBtn.click(function() {
+            if (replaceWith.val() != "") {
+              connectWith.val(replaceWith.val()).change();
+              elem.text(replaceWith.val());
+            }
+            replaceWith.remove();
+            okBtn.hide();
+            closeBtn.hide();
+            elem.show();
+            return false;
+          });
+          return false;
+        }
+      });
+    }
+  }
+});

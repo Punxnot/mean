@@ -1,0 +1,54 @@
+<div class="profile clearfix">
+  <img class="user-image" width="240" height="240" src="http://farm9.static.flickr.com/8250/8661901879_a2dbfd5951_m.jpg" alt="userpic">
+  <section class="info">
+    <!-- <form>
+      <input type="hidden" name="hiddenField">
+    </form>
+    <div class="name-container">
+      <h2 class="name editable" id="name">John Smith</h2>
+      <span class="ok-button"></span>
+      <span class="close-btn"></span>
+    </div> -->
+    <editable-text ng-text="Name"></editable-text>
+    <div class="address-container">
+      <div class="address editable">Portland, Oregon, USA</div>
+      <span class="ok-button"></span>
+      <span class="close-btn"></span>
+    </div>
+    <div class="languages-container">
+      <div class="languages editable">English</div>
+      <span class="ok-button"></span>
+      <span class="close-btn"></span>
+    </div>
+    <div class="skills" id="skillsContainer">
+      <div class="skill strong">
+        PHP
+        <span class="close-btn"></span>
+      </div>
+      <div class="skill strong">
+        Ruby
+        <span class="close-btn"></span>
+      </div>
+      <div class="skill medium">
+        JavaScript
+        <span class="close-btn"></span>
+      </div>
+      <div class="skill weak">
+        ActionScript
+        <span class="close-btn"></span>
+      </div>
+    </div>
+    <div class="add-skills-container">
+      <div class="add-skills">Add skills</div>
+      <select>
+        <option value="strong">Strong</option>
+        <option value="medium">Medium</option>
+        <option value="weak">Weak</option>
+      </select>
+      <span class="ok-button" id="addSkillBtn"></span>
+    </div>
+  </section>
+  <section class="buttons">
+    <button class="btn-print" type="button" onclick="window.print()">Print this page</button>
+  </section>
+</div>

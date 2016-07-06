@@ -1,6 +1,10 @@
+html, body {
+  font: 16px 'Roboto', Helvetica, Arial, sans-serif;
+  color: #4c4c4c;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 10px;
 }
 
 form {
@@ -25,4 +29,375 @@ form {
 .comment-body {
   margin-left:10px;
   font-size:20px;
+}
+
+/*Profile*/
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.profile {
+  background-color: #e6e6e6;
+}
+
+.info,
+.buttons {
+  padding: 20px 30px;
+}
+
+.info {
+  float: left;
+  width: 330px;
+  padding-right: 0;
+}
+
+.user-image {
+  float: left;
+  width: 240px;
+}
+
+.name-container,
+.address-container,
+.languages-container {
+  position: relative;
+}
+
+.name {
+  margin-bottom: 10px;
+  font-size: 1.8em;
+  font-weight: 400;
+}
+
+.address,
+.languages {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.skills {
+  font-size: 0;
+}
+
+.skill {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.skill.strong {
+  background: #000000;
+}
+
+.skill.medium {
+  background: #5c5c5c;
+}
+
+.skill.weak {
+  background: #a2a2a2;
+}
+
+.close-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  font-size: 0;
+  line-height: 1rem;
+  border-radius: 50%;
+  background: red;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+
+.close-btn::before {
+  content: '×';
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.skill:hover .close-btn{
+  display: block;
+}
+
+.add-skills {
+  margin-top: 10px;
+  padding: 3px 5px;
+  border: 1px solid transparent;
+  color: #7e7e7e;
+  cursor: pointer;
+}
+
+.add-skills:hover {
+  border-color: #bababa;
+}
+
+.buttons {
+  float: right;
+  width: 185px;
+  text-align: right;
+}
+
+.item {
+  position: relative;
+  float: left;
+  width: 240px;
+  height: 240px;
+  overflow-y: auto;
+  font-size: 0.8em;
+  border: 1px solid #e6e6e6;
+}
+
+.item ul {
+  margin: 0;
+  padding: 0 10px 10px 30px;
+}
+
+.item > p {
+  padding: 0 20px 10px;
+}
+
+.item section {
+  margin: 10px 20px 0 20px;
+  text-align: center;
+}
+
+.sample-code {
+  background: url(../img/sample_code.png);
+}
+
+.environment {
+  text-align: center;
+}
+
+section.item-title {
+  min-height: 75px;
+  margin: 0;
+  padding: 20px 30px;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+section.item-title .additional {
+  font-size: 1em;
+  font-weight: 400;
+  color: #7e7e7e;
+}
+
+section.item-title h3 {
+  margin-bottom: 0;
+}
+
+.availability {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.divided .item-title {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.divided .item-title:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.quote p {
+  position: relative;
+}
+
+.quote p::before,
+.quote p::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url(http://www.sailingeurope.com/css/img/Quote.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  z-index: 0;
+}
+
+.quote p::before {
+  top: -10px;
+  left: 10px;
+}
+
+.quote p::after {
+  bottom: 0;
+  right: 10px;
+  transform: scale(-1);
+}
+
+.quote p {
+  font-style: italic;
+}
+
+.quote-author {
+  display: block;
+  margin: 10px 0;
+  text-align: right;
+  font-style: normal;
+}
+
+.btn-print {
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #000000;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.btn-print:hover {
+  -webkit-filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.5));
+  -moz-filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.5));
+  -o-filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.5));
+}
+
+.editable {
+  padding-left: 5px;
+  border: 1px solid transparent;
+}
+
+.editable:hover {
+  border-color: #bababa;
+}
+
+input[type=text] {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: $text-color;
+  border: 1px solid #bababa;
+  outline: none;
+  background: white;
+  box-shadow: none;
+}
+
+.name + input[type=text] {
+  margin-bottom: 10px;
+  padding: 0 5px;
+  font-size: 1.8em;
+  font-weight: 400;
+}
+
+.address + input[type=text],
+.languages + input[type=text] {
+  margin-bottom: 5px;
+  padding: 0 5px;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.add-skills + input[type=text] {
+  width: 255px;
+  margin-top: 10px;
+  padding: 3px 5px;
+  padding-right: 120px;
+  color: #7e7e7e;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 400;
+  border: 1px solid #2ecc71;
+}
+
+.add-skills-container {
+  position: relative;
+  width: 255px;
+}
+
+.add-skills-container select {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  margin: 0;
+  display: none;
+}
+
+.ok-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 6px;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background-color: #e6e6e6;
+  cursor: pointer;
+  transition: background-color .3s;
+  display: none;
+}
+
+.ok-button::before {
+  content: 'L';
+  display: block;
+  color: white;
+  font-size: 0.6rem;
+  line-height: 0.7rem;
+  text-align: center;
+  transform: scaleX(-1) rotate(-45deg);
+}
+
+.ok-button:hover {
+  background-color: #2ecc71;
+}
+
+.editable ~ .close-btn {
+  right: 25px;
+  background-color: #e6e6e6;
+  transition: background-color .3s;
+}
+
+.editable ~ .close-btn:hover {
+  background-color: red;
 }
